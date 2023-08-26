@@ -1,54 +1,68 @@
 def ejercicio_1():
-    numero = int(input("Ingresa un número: "))
-    if numero % 2 == 0:
-        print("El número es par.")
-    else:
-        print("El número es impar.")
+    numeros = []
+    for i in range(5):
+        num = int(input(f"Ingrese el número {i+1}: "))
+        numeros.append(num)
+    
+    maximo = max(numeros)
+    minimo = min(numeros)
+    
+    print("El número máximo es:", maximo)
+    print("El número mínimo es:", minimo)
 
 def ejercicio_2():
-    limite = int(input("Ingresa un número límite: "))
-    suma = 0
-    for i in range(1, limite + 1):
-        suma += i
-    print("La suma de los números del 1 al", limite, "es:", suma)
+    numero = int(input("Ingrese un número: "))
+    
+    es_primo = True
+    if numero <= 1:
+        es_primo = False
+    else:
+        for i in range(2, int(numero**0.5) + 1):
+            if numero % i == 0:
+                es_primo = False
+                break
+    
+    if es_primo:
+        print("El número es primo.")
+    else:
+        print("El número no es primo.")
 
 def ejercicio_3():
-    num = int(input("Ingresa un número: "))
-    factorial = 1
-    for i in range(1, num + 1):
-        factorial *= i
-    print("El factorial de", num, "es:", factorial)
+    n = int(input("Ingrese un número: "))
+    suma = 0
+    while n != 0:
+        suma += n % 10
+        n //= 10
+    print("La suma de los dígitos es:", suma)
 
 def ejercicio_4():
-    base = float(input("Ingresa la base: "))
-    exponente = int(input("Ingresa el exponente: "))
-    resultado = 1
-    for _ in range(exponente):
-        resultado *= base
-    print(base, "elevado a la", exponente, "es:", resultado)
+    frase = input("Ingrese una frase: ")
+    invertida = frase[::-1]
+    print("Frase invertida:", invertida)
 
 def ejercicio_5():
-    while True:
-        contraseña = input("Ingresa la contraseña (debe tener al menos 8 caracteres): ")
-        if len(contraseña) >= 8:
-            print("Contraseña válida. ¡Registro exitoso!")
-            break
-        else:
-            print("La contraseña es demasiado corta. Inténtalo nuevamente.")
+    cantidad = int(input("Ingrese la cantidad de términos de la serie: "))
+    
+    a = 0
+    b = 1
+    print("Serie de Fibonacci:")
+    for _ in range(cantidad):
+        print(a, end=" ")
+        a, b = b, a + b
 
 def main():
     while True:
-        print("Menú de ejercicios:")
-        print("1. Par o impar")
-        print("2. Suma de números")
-        print("3. Factorial")
-        print("4. Potencia")
-        print("5. Registro con contraseña")
-        print("6. Salir")
+        print("\nMenú de ejercicios:")
+        print("1. Encontrar máximo y mínimo")
+        print("2. Número primo")
+        print("3. Suma de dígitos")
+        print("4. Invertir frase")
+        print("5. Serie de Fibonacci")
+        print("0. Salir")
         
         opcion = int(input("Selecciona una opción: "))
         
-        if opcion == 6:
+        if opcion == 0:
             print("¡Hasta luego!")
             break
         elif opcion == 1:
@@ -66,5 +80,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
